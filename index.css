@@ -1,0 +1,54 @@
+.game-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 1800px;
+
+  background-color: #ebbe9b;
+  background: linear-gradient(315deg, #ebbe9b 0%, #e7a977 74%);
+
+  height: 100%;
+  width: 100%;
+}
+
+.grid {
+  height: 90%;
+  width: 30%;
+
+  background-color: #abe9cd;
+  background-image: linear-gradient(315deg, #abe9cd 0%, #3eadcf 74%);
+
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px gray;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.cell {
+  height: 85px;
+  width: 85px;
+  border: 1px solid black;
+  margin: 2px;
+  border-radius: 5px;
+  background-color: #303030;
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.red {
+  background-color: darkred;
+}
+
+.green {
+  background-color: greenyellow;
+  color: grey;
+}
