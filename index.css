@@ -1,15 +1,18 @@
+.hide {
+  display: none;
+}
+
 .game-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-width: 1800px;
 
   background-color: #ebbe9b;
   background: linear-gradient(315deg, #ebbe9b 0%, #e7a977 74%);
 
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
 }
 
 .grid {
@@ -51,4 +54,8 @@
 .green {
   background-color: greenyellow;
   color: grey;
+}
+
+#status {
+  font-size: 30px;
 }

@@ -32,14 +32,14 @@ const plantBombs = () => {
     let row = Math.floor(Math.random() * 9);
     let column = Math.floor(Math.random() * 9);
 
-    console.log(row + " " + column);
+    //console.log(row + " " + column);
 
     grid[row][column].isBomb = true;
 
     let obj = {};
     obj.row = row;
     obj.column = column;
-    bombIndex.push(obj);
+    bombIndex.push(getId(row, column));
 
     //console.log(bombIndex);
 
@@ -73,6 +73,35 @@ const initBoard = () => {
   plantBombs();
 };
 
+const resetAll = () => {
+  gameOver = false;
+
+  let grid = document.getElementById("board");
+  grid.innerHTML = "";
+  addCells();
+  initBoard();
+};
+
+let retryBtn = document.getElementById("retry");
+retryBtn.addEventListener("click", () => resetAll());
+
+const lostGame = () => {
+  let bombs = document.getElementsByClassName("bomb");
+
+  for (let l = 0; l < bombs.length; l++) {
+    bombs[l].innerHTML = "B";
+    bombs[l].classList.add("red");
+  }
+
+  gameOver = true;
+
+  let stat = document.getElementById("text");
+  stat.innerHTML = "You lose!";
+
+  let btn = document.getElementById("btn-span");
+  btn.classList.remove("hide");
+};
+
 const handleClick = (cellEl, i, j) => {
   if (gameOver) {
     return;
@@ -81,25 +110,12 @@ const handleClick = (cellEl, i, j) => {
   let el = cellEl;
 
   if (grid[i][j].isBomb) {
-    let bombs = document.getElementsByClassName("bomb");
-
-    for (let l = 0; l < bombs.length; l++) {
-      bombs[l].innerHTML = "B";
-      bombs[l].classList.add("red");
-    }
-
-    gameOver = true;
+    lostGame();
   } else {
     grid[i][j].selected = true;
     el.innerHTML = grid[i][j].value.toString();
     el.classList.add("green");
   }
-
-  // if (grid[i][j].selected && grid[i][j].isBomb === true) {
-  //   currentSum += grid[i][j].value;
-  // } else {
-  //   currentSum -= grid[i][j].value;
-  // }
 
   updateBoard();
 };
